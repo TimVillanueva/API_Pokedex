@@ -20,3 +20,9 @@ The goal of this project is to make a fully functional pokedex using the pokeAPI
 - QA
   - Try to break pokedex and refactor
 - Deploy to Surge
+
+## Reminders
+- CRUD
+- DRY
+- COMMIT COMMIT COMMIT
+- Leave comments
