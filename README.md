@@ -1,9 +1,25 @@
 # API_Pokedex
 Project 1 API Pokedex
 ### trello board: (https://trello.com/b/Zcqx0vv1/pokedex-api)
-
+### wireframe: (https://wireframe.cc/rL6KmC)
 ## Goals
-The goal of this project is to make a fully functional pokedex using the pokeAPI 
+The goal of this project is to make a fully functional pokedex using the pokeAPI
+
+
+![pokedex](https://static.wikia.nocookie.net/pokemon/images/5/5c/Gen_I_Pokedex.png/revision/latest?cb=20100717083120)
+
+## Desired Functionality
+- Input pokemon by name or number
+- Sprite + basic info displayed on pokedex screen
+- ability to use other buttons to view abilities, moves, etc.
+- navigate back to basic information
+- input new pokemon to get different info
+### Optional Functions
+- list of pokemon to scroll through
+- view multiple sprites (shiny etc.) 
+- add more API data 
+- audio for pokmon calls? 
+- make visual as true to reference image as possible
 
 ## Steps to Completing this Project
 - Create Boiler Plate CSS, HTML, JS
