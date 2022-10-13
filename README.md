@@ -6,17 +6,17 @@ Project 1 API Pokedex
 The goal of this project is to make a fully functional pokedex using the pokeAPI 
 
 ## Steps to Completing this Project
--Create Boiler Plate CSS, HTML, JS
--Decide which elements from API I will be using
--Basic CSS layout
-  - create empty buttons for each functionality 
+- Create Boiler Plate CSS, HTML, JS
+- Decide which elements from API I will be using
+- Basic CSS layout
+  - create empty buttons for each functionality
   - general spacing of elements
--Event Listeners
-  -Link buttons to JS
-    -Confirm that all buttons are functional before connecting to API
--Reset functionality to search for new Pokemon
--Refactor CSS to fit all the data
-  -decide on fonts, spacing, make screen look like screen 
--QA
-  -Try to break pokedex and refactor
--Deploy to Surge
+- Event Listeners
+  - Link buttons to JS
+    - Confirm that all buttons are functional before connecting to API
+- Reset functionality to search for new Pokemon
+- Refactor CSS to fit all the data
+  - decide on fonts, spacing, make screen look like screen 
+- QA
+  - Try to break pokedex and refactor
+- Deploy to Surge
