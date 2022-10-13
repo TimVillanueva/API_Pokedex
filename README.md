@@ -15,6 +15,9 @@ The goal of this project is to make a fully functional pokedex using the pokeAPI
 - navigate back to basic information
 - input new pokemon to get different info
 ### Optional Functions
+
+
+
 - list of pokemon to scroll through
 - view multiple sprites (shiny etc.) 
 - add more API data 
@@ -42,3 +45,7 @@ The goal of this project is to make a fully functional pokedex using the pokeAPI
 - DRY
 - COMMIT COMMIT COMMIT
 - Leave comments
+
+
+
+![Screen Shot 2022-10-13 at 4 30 00 PM](https://user-images.githubusercontent.com/114944160/195714907-260829d9-efb4-4356-b10e-01ab650d4b4c.png)
