@@ -1,1 +1,147 @@
+.body {
+    border: 2px solid black;
+    
+}
+#green{
+    background-color:rgb(39, 168, 37);
+    
+    };
+#red{
+    background-color: rgb(215, 54, 55);
+    }
+#yellow{
+    background-color: rgb(238, 238, 56);
+    };
+
+ul {
+    list-style: none;
+}
+.dexContainer {
+    display:flex;
+    flex-direction: center;
+    border: 3px solid black;
+    width: 600px;
+    height: 750px;
+    background-color: rgb(215, 54, 54);
+    border-radius: 10px;
+    z-index: -10;
+}
+#screenContainer{
+    display:flex;
+    width: 455px;
+    height:380px;
+    background-color: grey;
+    border:2px solid black;
+    position: relative;
+    top: 100px;
+    right: 31.25px;
+    border-radius: 5px 5px 5px 55px;
+    align-items: center;
+    justify-content: center;
+}
+.screen {
+    background-color: black;
+    height: 262px;
+    width: 375px;
+    border-radius: 5px;
+    
+}
+.screenLights{
+    display: flex;
+    list-style-type: none;
+    position: absolute;
+    top:0;
+    left: 150px;
+}
+.screenLight {
+    margin: 0 10px;
+    height: 10px;
+    width: 10px;
+    border-radius: 50px;
+    border:2px solid black;
+    background-color: rgb(238, 35, 35);
+}
+.cornerLight {
+    margin: 0 10px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50px;
+    border:2px solid black;
+    position: absolute;
+    top: 340px;
+    left: 25px;
+    background-color: rgb(238, 35, 35);
+}
+.lines{
+    padding: -10 0;
+    position: absolute;
+    right: 20px;
+    bottom: 0px;
+    line-height: 7px;
+    list-style-type: none;
+
+}
+.cameraBorder {
+    width:60px;
+    height: 60px;
+    margin: 10px;
+    background-color: rgb(131, 155, 168);
+    border-radius: 50px;
+    border: 2px black solid;
+}
+.camera{
+    width:50px;
+    height: 50px;
+    margin: 7px;
+    background-color: rgb(73, 131, 162);
+    border-radius: 50px;
+}
+
+.cameraLens{
+    width:30px;
+    height: 30px;
+    margin: 4px;
+    background-color: rgb(131, 155, 168);
+    border-radius: 50px;
+}
+.cameraSheen {
+    width:10px;
+    height: 10px;
+    padding: 3px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+}
+.lights {
+    display: flex;
+    list-style-type: none;
+    position: absolute;
+    left: 60px;
+}
+.light {
+    margin: 0 10px;
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    border:2px solid black;
+}
+.controlContainer{
+    display:flex;
+    border: 2px solid black;
+    width: 525px;
+    height: 187px;
+    position: absolute;
+    bottom: 125px;
+    left: 33px;
+}
+.leftButton {
+    height: 35px;
+    width: 35px;
+    border-radius: 50px;
+    background-color:black;
+    position: absolute;
+    left: 10px;
+    top: 25px;
+}
+
+
 
