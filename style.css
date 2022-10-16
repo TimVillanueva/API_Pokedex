@@ -5,13 +5,98 @@
 #green{
     background-color:rgb(39, 168, 37);
     
-    };
+}
+#gShade{
+    background-color:#346e3c;
+    height: 12px;
+    width: 13px;
+    border-radius: 50px;
+    position:absolute;
+    bottom:3px;
+    left: 132px;
+    
+}
+#gInner{
+    background-color:rgb(39, 168, 37);
+    height: 8px;
+    width: 9px;
+    border-radius: 50px;
+    position:absolute;
+    bottom:7px;
+    left: 132px;
+}
+#gSheen{
+    background-color:#bbdec0;
+    height: 4px;
+    width: 4px;
+    border-radius: 50px;
+    position:absolute;
+    bottom:9px;
+    left: 134px;
+}
+    
 #red{
     background-color: rgb(215, 54, 55);
     }
+#rShade{
+    background-color:#9f001b;
+    height: 12px;
+    width: 13px;
+    border-radius: 50px;
+    position:absolute;
+    bottom:3px;
+    left: 54px;
+    
+}
+#rInner{
+    background-color:rgb(215, 54, 55);
+    height: 8px;
+    width: 9px;
+    border-radius: 50px;
+    position:absolute;
+    bottom:7px;
+    left: 54px;
+}
+#rSheen{
+    background-color:#fc7087;
+    height: 4px;
+    width: 4px;
+    border-radius: 50px;
+    position:absolute;
+    bottom:9px;
+    left: 55px;
+}
 #yellow{
-    background-color: rgb(238, 238, 56);
-    };
+    background-color: #fee94c
+    }
+    #yShade{
+        background-color:#9f8b0f;
+        height: 12px;
+        width: 13px;
+        border-radius: 50px;
+        position:absolute;
+        bottom:3px;
+        left: 93px;
+        
+    }
+    #yInner{
+        background-color:#fee94c;
+        height: 8px;
+        width: 9px;
+        border-radius: 50px;
+        position:absolute;
+        bottom:7px;
+        left: 92px;
+    }
+    #ySheen{
+        background-color:#fdf3a8;
+        height: 4px;
+        width: 4px;
+        border-radius: 50px;
+        position:absolute;
+        bottom:9px;
+        left: 95px;
+    }
 
 ul {
     list-style: none;
@@ -377,7 +462,7 @@ left: 10px;
 }
 #rightThin {
     margin: 0 2px;
-    height: 6px;
+    height: 8px;
     width: 70px;
     border:2px solid black;
     background-color: #232323;
