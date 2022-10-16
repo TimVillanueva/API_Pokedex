@@ -9,11 +9,25 @@
 </head>
 <body>
     <div class ="dexContainer">
+        <div class="controlContainer">
+            <div class="leftButton"> </div>
+            <div class="bottomScreen"></div>
+            <ul class="bottomButtons">
+                <li><div class="bottomLeft"></div></li>
+                <li><div class="bottomRight"></div></li>
+            </ul>
+            <button class="DPad" id="verticalTop"></button>
+            <button class="DPad" id="verticalBottom"></button>
+            <button class="DPad" id="horizontalLeft"></button>
+            <button class="DPad" id="HorizontalRight"></button>
+        </div>
+        <div class="dexBorder"></div>
+        <div class="cameraEdge">
     <div class="cameraBorder">
         <div class="camera">
             <div class="cameraLens">
                 <div class="cameraSheen"></div>
-            </div></div></div>
+            </div></div></div></div>
     <ul class ="lights">
     <li><div class="light" id="red"></div></li>
     <li><div class="light" id="yellow"></div></li>
@@ -27,12 +41,9 @@
         <input type="button"
                 id="searchButton"
                 value="click here"/>
-    </form>
-     -->
-     <div id="screenContainer">
-        <div class ="screen">
-            
-        </div>
+    </form> -->
+    <div id="screenContainer">
+        <div class ="screen"></div>
         <ul class ="screenLights">
             <li><div class ="screenLight"></div></li>
             <li> <div class ="screenLight"></div></li>
@@ -44,12 +55,66 @@
             <li><div>______</div></li>
             <li><div>______</div></li>
         </ul>
-     </div>
-     <div class = "controlContainer">
-        <div class = "leftButton"> </div>
-     </div>
-     </div>
+    </div>
+    
+    </div>
     <!-- end of dexContainer -->
+    <!-- hinge/overhang containers starts here-->
+    <div class="overhangContainer"></div>
+    <div class="hingeContainer">
+        <div class="hingeSheen"></div>
+        <div class="hingeShade"></div>
+        <div class="groove" id="top"></div>
+        <div class="groove" id="bottom"></div>
+    </div>
+    <!-- end of hinge containers -->
+    <!-- Right side of Pokedex Info Here -->
+<div class="dexContainer" id="rightSideContainer">
+    <div class= "dexBorder" id="dexBorderRightSide"></div>
+    <div class="inputScreen">
+
+    </div>
+    <div class="gridContainer">
+        <button class="gridItem" id="grid1">1</button>
+        <button class="gridItem">2</button>
+        <button class="gridItem">3</button>
+        <button class="gridItem">4</button>
+        <button class="gridItem" id="grid5">5</button>
+        <button class="gridItem" id="grid6">6</button>
+        <button class="gridItem">7</button>
+        <button class="gridItem">8</button>
+        <button class="gridItem">9</button>
+        <button class="gridItem" id="grid10">10</button>
+    </div>
+    <div class="rightBottomContainer">
+        <ul class="bottomButtons" id="rightThinList">
+            <li><div class="bottomLeft" id="rightThin"></div></li>
+            <li><div class="bottomRight" id="rightThin"></div></li>
+        </ul>
+        <ul class="bottomButtons" id="whiteSquares">
+            <li><button class="gridItem" id="whiteSquare1"></button></li>
+            <li><button class="gridItem" id="whiteSquare2"></button></li>
+            <li><div class="gridItem" id="yellowCircle">
+                <div id="yellowShade"></div>
+                <div id="yellowInner"></div>
+                <div id="yellowSheen"></div>
+            </div></li>
+        </ul>
+        <ul class="bottomButtons" id="blackRectangles">
+            <li><button class="gridItem" id="blackRectangle"></button></li>
+            <li><button class="gridItem" id="blackRectangle"></button></li>
+            </div></li>
+        </ul>
+
+
+
+    </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
+
+
+
+<!-- https://bennettfeely.com/clippy/ -- Used this site to make the D pad polygons-->
