@@ -9,18 +9,6 @@
 </head>
 <body>
     <div class ="dexContainer">
-        <div class="controlContainer">
-            <button class="leftButton"> </button>
-            <div class="bottomScreen"></div>
-            <ul class="bottomButtons">
-                <li><div class="bottomLeft"></div></li>
-                <li><div class="bottomRight"></div></li>
-            </ul>
-            <button class="DPad" id="verticalTop"></button>
-            <button class="DPad" id="verticalBottom"></button>
-            <button class="DPad" id="horizontalLeft"></button>
-            <button class="DPad" id="HorizontalRight"></button>
-        </div>
         <div class="dexBorder"></div>
         <div class="cameraEdge">
     <div class="cameraBorder">
@@ -54,7 +42,8 @@
                 id="searchButton"
                 value="click here"/>
     </form> -->
-    <div id="screenContainer">
+    <div class="screenContainer" id="threeDScreenContainer"></div>
+    <div class="screenContainer">
         <div class ="screen"></div>
         <ul class ="screenLights">
             <li><div class ="screenLight"></div></li>
@@ -68,7 +57,19 @@
             <li><div>______</div></li>
         </ul>
     </div>
-    
+    <div class="controlContainer">
+        <div class="threeDLeftButton"></div>
+        <button class="leftButton"> </button>
+        <div class="bottomScreen"></div>
+        <ul class="bottomButtons">
+            <li><div class="bottomLeft"></div></li>
+            <li><div class="bottomRight"></div></li>
+        </ul>
+        <button class="DPad" id="verticalTop"></button>
+        <button class="DPad" id="verticalBottom"></button>
+        <button class="DPad" id="horizontalLeft"></button>
+        <button class="DPad" id="HorizontalRight"></button>
+    </div>
     </div>
     <!-- end of dexContainer -->
     <!-- hinge/overhang containers starts here-->
@@ -83,10 +84,13 @@
     <!-- Right side of Pokedex Info Here -->
 <div class="dexContainer" id="rightSideContainer">
     <div class= "dexBorder" id="dexBorderRightSide"></div>
-    <div class="inputScreen">
+
+    <div class="inputScreen"> 
 
     </div>
-    <div class="gridContainer">
+    <!-- button grid -->
+    <div class="grid3D"></div>
+    <div class="gridContainer"> 
         <button class="gridItem" id="grid1">1</button>
         <button class="gridItem">2</button>
         <button class="gridItem">3</button>
@@ -103,6 +107,7 @@
             <li><div class="bottomLeft" id="rightThin"></div></li>
             <li><div class="bottomRight" id="rightThin"></div></li>
         </ul>
+        <div id="whiteSquares3D"></div>
         <ul class="bottomButtons" id="whiteSquares">
             <li><button class="gridItem" id="whiteSquare1"></button></li>
             <li><button class="gridItem" id="whiteSquare2"></button></li>
@@ -110,18 +115,19 @@
                 <div id="yellowShade"></div>
                 <div id="yellowInner"></div>
                 <div id="yellowSheen"></div>
-            </div></li>
+            </div>
         </ul>
+        <div class="blackRectanges3D"></div>
+        <div class="blackRectanges3D" id="second3Drectangle"></div>
         <ul class="bottomButtons" id="blackRectangles">
             <li><button class="gridItem" id="blackRectangle"></button></li>
             <li><button class="gridItem" id="blackRectangle"></button></li>
-            </div></li>
         </ul>
 
 
 
     </div>
-    </div>
+    <!-- end of right side of pokedex -->
 
     <script src="script.js"></script>
 </body>

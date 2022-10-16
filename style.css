@@ -68,8 +68,8 @@
 }
 #yellow{
     background-color: #fee94c
-    }
-    #yShade{
+}
+#yShade{
         background-color:#9f8b0f;
         height: 12px;
         width: 13px;
@@ -78,25 +78,25 @@
         bottom:3px;
         left: 93px;
         
-    }
-    #yInner{
-        background-color:#fee94c;
-        height: 8px;
-        width: 9px;
-        border-radius: 50px;
-        position:absolute;
-        bottom:7px;
-        left: 92px;
-    }
-    #ySheen{
-        background-color:#fdf3a8;
-        height: 4px;
-        width: 4px;
-        border-radius: 50px;
-        position:absolute;
-        bottom:9px;
-        left: 95px;
-    }
+}
+#yInner{
+background-color:#fee94c;
+height: 8px;
+width: 9px;
+border-radius: 50px;
+position:absolute;
+bottom:7px;
+left: 92px;
+}
+#ySheen{
+background-color:white;
+height: 4px;
+width: 4px;
+border-radius: 50px;
+position:absolute;
+bottom:9px;
+left: 94px;
+}
 
 ul {
     list-style: none;
@@ -120,8 +120,20 @@ ul {
     top: 110px;
     left:20px;
 }
-
-#screenContainer{
+#threeDScreenContainer{
+    display:flex;
+    width: 455px;
+    height:380px;
+    background-color: #7d7e7e;
+    border:2px solid black;
+    position: absolute;
+    top: 166px;
+    right: 917px;
+    border-radius: 5px 5px 5px 55px;
+    align-items: center;
+    justify-content: center;
+}
+.screenContainer{
     display:flex;
     width: 455px;
     height:380px;
@@ -134,6 +146,7 @@ ul {
     align-items: center;
     justify-content: center;
 }
+
 .screen {
     background-color: #232323;
     height: 262px;
@@ -251,21 +264,32 @@ ul {
     left: 33px;
     margin:0 auto;
 }
-.leftButton {
-    height: 75px;
-    width: 75px;
+.threeDLeftButton{
+    height: 70px;
+    width: 70px;
     border-radius: 50px;
-    background-color:#232323;
-    position: relative;
+    background-color:#000203;
+    position: absolute;
     left: 10px;
     top: 25px;
     border: 2px solid black;
 }
+.leftButton {
+    height: 72px;
+    width: 72px;
+    border-radius: 50px;
+    background-color:#232323;
+    position: absolute;
+    left: 10px;
+    top: 25px;
+    border: 2px solid black;
+}
+
 .bottomScreen {
     width: 200px;
     height: 90px;
     background-color: rgba(81,174,95,255);
-    border: 2px black solid;
+    border: 3px black solid;
     border-radius: 20px;
     position:absolute;
     left: 130px;
@@ -402,14 +426,26 @@ left: 10px;
     left:6px;
     border-radius: 7px;
 }
+
 .inputScreen {
     width: 400px;
     height: 150px;
     background-color: #232323;
-    border: 2px black solid;
+    border: 3px black solid;
     position: absolute; 
     top: 100px;
     left: 100px;
+    border-radius: 3px;
+}
+.grid3D{
+    position: absolute;
+    width: 385px;
+    height: 100px;
+    border: 2px solid black;
+    top: 283px;
+    right: 99px;
+    border-radius: 3px;
+    background-color:#135178 ;
 }
 .gridContainer{
     display:grid;
@@ -467,6 +503,16 @@ left: 10px;
     border:2px solid black;
     background-color: #232323;
 }
+#whiteSquares3D{
+    position: absolute;
+    top: 49px;
+    left: 53px;
+    background-color:#acacac;
+    height:52px;
+    width: 157px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
 #whiteSquares{
     position: absolute;
     top: 30px;
@@ -518,6 +564,26 @@ left: 10px;
     position: absolute;
     top: 2px;
     background-color: #fff6c0;
+}
+.blackRectanges3D{
+    background-color:#000000;
+    border-radius: 10px;
+    width: 178px;
+    height: 47px;
+    position: absolute;
+    top:168px;
+    left: 51px;
+    border: 2px solid black;
+}
+#second3Drectangle{
+    background-color:#000000;
+    border-radius: 10px;
+    width: 178px;
+    height: 47px;
+    position: absolute;
+    top:168px;
+    left: 276px;
+    border: 2px solid black; 
 }
 #blackRectangles{
     top: 150px;
