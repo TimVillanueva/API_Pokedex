@@ -1,9 +1,11 @@
-
-
-let button = document.querySelectorAll(".gridItem");
-
-console.log(button[0].innerText)
-
+let buttonA = document.querySelector(".leftButton");
+let padUp = document.querySelector("#verticalTop");
+let padDown = document.querySelector("#verticalBottom");
+let padLeft = document.querySelector("#horizontalLeft");
+let padRight = document.querySelector("#horizontalRight");
+padRight.addEventListener("click", () => 
+{alert("working");
+})
 
 // const url =``
 // function addItem(element){
