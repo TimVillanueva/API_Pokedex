@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel ="stylesheet" href="style.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    </style>
 </head>
 <body>
     <div class ="dexContainer" id="leftDexContainer">
@@ -44,7 +47,10 @@
     </form> -->
     <div class="screenContainer" id="threeDScreenContainer"></div>
     <div class="screenContainer">
-        <div class ="screen"></div>
+        <div class ="screen">
+        <div class ="viewScreen" id="leftViewScreen"></div>
+
+        </div>
         <ul class ="screenLights">
             <li><div class ="screenLight"></div></li>
             <li> <div class ="screenLight"></div></li>
@@ -85,7 +91,12 @@
     
 <div class="dexContainer" id="rightSideContainer">
     <div class= "dexBorder" id="dexBorderRightSide"></div>
-    <div class="inputScreen"> 
+    <div class="inputScreen">
+        <div class="viewScreen" id="rightViewScreen">
+         <div class="selector">▶</div><button class="searchButton"> Search</button>
+            <button class="nationalDex"> National Dex</button>
+            <button class="regionalDex">Regional Dex List</button>
+        </div>
     </div>
     <!-- button grid -->
     <div class="grid3D"></div>
@@ -108,15 +119,16 @@
             <li><div class="bottomRight" id="rightThin"></div></li>
         </ul>
         <div id="whiteSquares3D"></div>
-        <ul class="bottomButtons" id="whiteSquares">
-            <li><button class="gridItem" id="whiteSquare1">SELECT</button></li>
-            <li><button class="gridItem" id="whiteSquare2">RETURN</button></li>
-            <li><div class="gridItem" id="yellowCircle">
+        <div class="bottomButtons" id="whiteSquares">
+        <button class="gridItem" id="whiteSquare1">SELECT</button>
+            <button class="gridItem" id="whiteSquare2">RETURN</button>
+            <div class="gridItem" id="yellowCircle">
                 <div id="yellowShade"></div>
                 <div id="yellowInner"></div>
                 <div id="yellowSheen"></div>
             </div>
-        </ul>
+        </div>
+        
         
         <div class="blackRectanges3D"></div>
         <div class="blackRectanges3D" id="second3Drectangle"></div>
