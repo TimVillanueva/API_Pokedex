@@ -8,11 +8,16 @@ let padRight = document.querySelector("#horizontalRight");
 //buttons for right side
 let selectButton = document.querySelector("#whiteSquare1");
 let returnButton = document.querySelector("#whiteSquare2");
-let grid5 = document.querySelector("#blackRectangle1");
+let leftArrow = document.querySelector("#blackRectangle1");
+let rightArrow = document.querySelector("#blackRectangle2");
 
-// returnButton.addEventListener("click", () => 
-// {alert("working");
-// })
+let enterButton = document.querySelector("#enterButton");
+
+
+
+enterButton.addEventListener("click", () => 
+{alert("working");
+})
 
 // const url =``
 // function addItem(element){

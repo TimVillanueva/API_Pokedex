@@ -457,6 +457,7 @@ left: 10px;
     right: 99px;
     border-radius: 3px;
     background-color:#135178 ;
+    z-index: -2;
 }
 .gridContainer{
     display:grid;
@@ -480,7 +481,10 @@ left: 10px;
 }
 .gridItem:hover{
     background-color:#158fdb;
-    cursor: pointer;
+}
+.gridItem:active{
+    transform: translate3d(3px, 3px, 0px);
+    z-index: -1;
 }
 #grid1{
     border-radius: 4px 0 0 0;
@@ -530,15 +534,14 @@ left: 10px;
     left: 0px;
     
 }
-#whiteSquare1{
+#whiteSquare1, #whiteSquare2{
     background-color: rgba(222,222,222,255);
     border-radius: 5px 0 0 5px;
-    font-size:20px;
+    font-size:15px;
 }
 #whiteSquare2{
-    background-color: rgba(222,222,222,255);
     border-radius: 0 5px 5px 0;
-    font-size:20px;
+
 }
 #whiteSquare1:active, #whiteSquare2:active{
     transform: translate3d(3px, 3px, 0px);
@@ -593,20 +596,9 @@ left: 10px;
     border: 2px solid black;
 }
 #second3Drectangle{
-    background-color:#000000;
-    border-radius: 10px;
-    width: 178px;
-    height: 47px;
-    position: absolute;
     top:168px;
     left: 276px;
-    border: 2px solid black; 
 }
-/* #blackRectangles{
-    top: 150px;
-    left:0px;
-    justify-content: space-evenly
-} */
 #blackRectangle1, #blackRectangle2{
     background-color:#232323;
     border-radius: 10px;
@@ -621,7 +613,6 @@ left: 10px;
     border: 0;
 }
 #blackRectangle2{
-    position: absolute;
     top:164px;
     left: 274px;
 }
