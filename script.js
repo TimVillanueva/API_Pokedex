@@ -1,11 +1,18 @@
+//buttons for left side
 let buttonA = document.querySelector(".leftButton");
 let padUp = document.querySelector("#verticalTop");
 let padDown = document.querySelector("#verticalBottom");
 let padLeft = document.querySelector("#horizontalLeft");
 let padRight = document.querySelector("#horizontalRight");
-padRight.addEventListener("click", () => 
-{alert("working");
-})
+
+//buttons for right side
+let selectButton = document.querySelector("#whiteSquare1");
+let returnButton = document.querySelector("#whiteSquare2");
+let grid5 = document.querySelector("#blackRectangle1");
+
+// returnButton.addEventListener("click", () => 
+// {alert("working");
+// })
 
 // const url =``
 // function addItem(element){

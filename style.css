@@ -2,6 +2,9 @@
     max-height: 700px;
     
 }
+button {
+    cursor: pointer;
+}
 #green{
     background-color:rgb(39, 168, 37);
     
@@ -101,10 +104,11 @@ left: 94px;
 ul {
     list-style: none;
 }
-.dexContainer {
+.dexContainer, #leftDexContainer {
     display:flex;
-    flex-direction: center;
+    /* flex-direction: center; */
     border: 3px solid black;
+    position:absolute;
     width: 600px;
     height: 750px;
     background-color: rgba(220,10,45,255);
@@ -117,8 +121,8 @@ ul {
     /* clip-path: polygon(43% 32%, 64% 0, 100% 0, 100% 100%, 0 100%, 0 33%); */
     border:2px solid black;
     position: absolute;
-    top: 110px;
-    left:20px;
+    top: 100px;
+    left:10px;
 }
 #threeDScreenContainer{
     display:flex;
@@ -127,8 +131,8 @@ ul {
     background-color: #7d7e7e;
     border:2px solid black;
     position: absolute;
-    top: 166px;
-    left:64px;
+    top: 154px;
+    left:52px;
     border-radius: 5px 5px 5px 55px;
     align-items: center;
     justify-content: center;
@@ -260,7 +264,7 @@ ul {
     width: 525px;
     height: 187px;
     position: absolute;
-    bottom: 100px;
+    bottom: 20px;
     left: 33px;
     margin:0 auto;
 }
@@ -524,14 +528,20 @@ left: 10px;
     position: absolute;
     top: 30px;
     left: 0px;
+    
 }
 #whiteSquare1{
     background-color: rgba(222,222,222,255);
     border-radius: 5px 0 0 5px;
+    font-size:20px;
 }
 #whiteSquare2{
     background-color: rgba(222,222,222,255);
     border-radius: 0 5px 5px 0;
+    font-size:20px;
+}
+#whiteSquare1:active, #whiteSquare2:active{
+    transform: translate3d(3px, 3px, 0px);
 }
 #yellowCircle{
     border-radius: 50px;
@@ -592,15 +602,29 @@ left: 10px;
     left: 276px;
     border: 2px solid black; 
 }
-#blackRectangles{
+/* #blackRectangles{
     top: 150px;
     left:0px;
     justify-content: space-evenly
-}
-#blackRectangle{
+} */
+#blackRectangle1, #blackRectangle2{
     background-color:#232323;
     border-radius: 10px;
     width: 180px;
     height:50px;
     margin-right:45px;
+    position: absolute;
+    top:164px;
+    left: 48px;
+    font-size: 40px;
+    color: grey;
+    border: 0;
+}
+#blackRectangle2{
+    position: absolute;
+    top:164px;
+    left: 274px;
+}
+#blackRectangle1:active, #blackRectangle2:active{
+    transform: translate3d(3px, 3px, 0px);
 }

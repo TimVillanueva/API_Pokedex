@@ -8,7 +8,7 @@
     <link rel ="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class ="dexContainer">
+    <div class ="dexContainer" id="leftDexContainer">
         <div class="dexBorder"></div>
         <div class="cameraEdge">
     <div class="cameraBorder">
@@ -82,11 +82,10 @@
     </div>
     <!-- end of hinge containers -->
     <!-- Right side of Pokedex Info Here -->
+    
 <div class="dexContainer" id="rightSideContainer">
     <div class= "dexBorder" id="dexBorderRightSide"></div>
-
     <div class="inputScreen"> 
-
     </div>
     <!-- button grid -->
     <div class="grid3D"></div>
@@ -102,6 +101,7 @@
         <button class="gridItem">9</button>
         <button class="gridItem" id="grid10">10</button>
     </div>
+    
     <div class="rightBottomContainer">
         <ul class="bottomButtons" id="rightThinList">
             <li><div class="bottomLeft" id="rightThin"></div></li>
@@ -109,24 +109,23 @@
         </ul>
         <div id="whiteSquares3D"></div>
         <ul class="bottomButtons" id="whiteSquares">
-            <li><button class="gridItem" id="whiteSquare1"></button></li>
-            <li><button class="gridItem" id="whiteSquare2"></button></li>
+            <li><button class="gridItem" id="whiteSquare1">select</button></li>
+            <li><button class="gridItem" id="whiteSquare2">return</button></li>
             <li><div class="gridItem" id="yellowCircle">
                 <div id="yellowShade"></div>
                 <div id="yellowInner"></div>
                 <div id="yellowSheen"></div>
             </div>
         </ul>
+        
         <div class="blackRectanges3D"></div>
         <div class="blackRectanges3D" id="second3Drectangle"></div>
-        <ul class="bottomButtons" id="blackRectangles">
-            <li><button class="gridItem" id="blackRectangle"></button></li>
-            <li><button class="gridItem" id="blackRectangle"></button></li>
-        </ul>
-
-
-
+        <button id="blackRectangle1"><span>&#8592;</span></button>
+        <button id="blackRectangle2"><span>&#8594;</span></button>
     </div>
+    
+</div>
+
     <!-- end of right side of pokedex -->
 
     <script src="script.js"></script>
