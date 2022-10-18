@@ -237,6 +237,13 @@ left: 250px;
 .region{
     width: 275px;
     padding: 5px;
+    visibility: inherit;
+}
+.regionList{
+    font-family: 'Press Start 2P', cursive;
+    color:green;
+    position: absolute;
+    left: -5px;
 }
 .screenLights{
     display: flex;

@@ -19,23 +19,24 @@ let downArrow = document.querySelector("#grid6");
 let selector = document.querySelector(".selector");
 
 //Global Variables
-let counter=0;
+let counter=1;
 let nationalDex = false;
-let regionArr = ['Kanto 0 - 151','Johto 152 - 251','Hoenn 252 - 386','Sinnoh 387 - 493','Unova 494 - 649','Kalos 650 -  721','Alola 722 - 809','Galar 810 - 905']
+let regionArr = ['Kanto','Johto','Hoenn','Sinnoh','Unova','Kalos','Alola','Galar'];
 //arrow selector variables
 let position = [0,1,2, 3];
 let currentPosition = position[0];
 let verticalPosition = [0,1,2,3,4,5,6,7];
-let currentVertical = position[0];
+let currentVertical = verticalPosition[0];
 let verticalHeight = 20;
 
 
 
 //http://pokeapi.co/api/v2/pokemon/?limit=811
 
-// const url =``
+
 function addItem(element, choice){
     let nationalDexList = document.querySelector(".nationalDexList");
+    let regionList = document.querySelector(".regionList");
     let li = document.createElement("li");
     li.setAttribute('id',element.name);
     if (choice === 0){
@@ -44,7 +45,8 @@ function addItem(element, choice){
     }
     else if (choice === 1)
     {
-        
+        regionList.appendChild(li);
+        li.appendChild(document.createTextNode(`#${counter}:${element.name}`));
     }
     counter++;
 }
@@ -90,6 +92,23 @@ async function showNationalDex(event) {
         console.log("failure", error);
     })
 }
+async function createRegionalDex (event) {
+    console.log(event)
+    fetch(`http://pokeapi.co/api/v2/pokemon/?limit=${(event[1]-event[0])}&offset=${event[0]}`)
+    .then( response => {
+        return response.json();
+    })
+    .then(response => {
+        let regionalArr = response.results;
+        for (let i=0; i<regionalArr.length; i++){
+            addItem(regionalArr[i], 1);
+        }
+        document.querySelector(".regionList").style.visibility="visible";
+    })
+    .catch(error => {
+        console.log("failure", error);
+    })
+}
 const showRegionlDexList = () =>
 {
     document.querySelector("#regionalDexList").style.visibility = "visible";
@@ -97,7 +116,9 @@ const showRegionlDexList = () =>
     document.querySelector(".selector").style.visibility = "visible";
     selector.style.transform = "translate(0px,20px)";
 }
+
 const showHomeScreen =() =>{
+    document.querySelector(".regionList").style.visibility="hidden";
     document.querySelector("#rightViewScreen").style.overflowY = "hidden";
     document.querySelector(".nationalDexList").style.visibility = "hidden";
     document.querySelector("#regionalDexList").style.visibility = "hidden";
@@ -106,6 +127,14 @@ const showHomeScreen =() =>{
     document.querySelector("#inputBar").style.visibility = "visible";
     document.querySelector(".regionalDex").style.visibility = "visible";
     document.querySelector(".selector").style.visibility = "visible";
+    
+}
+const showRegionList = (position) => {
+    
+    document.querySelector("#regionalDexList").style.visibility = "hidden";
+    document.querySelector(".selector").style.visibility = "hidden";
+    console.log(position)
+    createRegionalDex(position);
 }
 
 rightArrow.addEventListener("click", () => {
@@ -166,6 +195,7 @@ upArrow.addEventListener("click", () => {
 
 enterButton.addEventListener("click", getData); 
 selectButton.addEventListener("click",() => {
+    
     if (currentPosition === 1){
         hideNavBar();
         document.querySelector("#rightViewScreen").style.overflowY = "scroll";
@@ -184,15 +214,26 @@ selectButton.addEventListener("click",() => {
         currentPosition = position[3];
         hideNavBar();
         showRegionlDexList();
+        
+    }
+    else if (currentPosition === position[3])
+    {
+        let regionArr = [[0, 151],[151, 251],[251, 386],[386, 493],[493, 649],[649, 721],[721, 809],[809, 905]];
+        showRegionList(regionArr[currentVertical]);
     }
 });
 returnButton.addEventListener("click",() => {
-    showHomeScreen();
-    if( currentPosition === 3){
+    console.log(currentPosition);
+    if(currentPosition === 3){
     selector.style.transform = "translateX(225px)";
     currentPosition = position[2];
+    currentVertical = verticalPosition[0];
+    verticalHeight = 20;
+    document.querySelector(".regionList").innerText ="";
+    counter =1;
     }
-    return currentPosition;
+    showHomeScreen();
+    return currentPosition, counter;
 });
 
 
