@@ -224,7 +224,17 @@ ul {
     position: relative;
     left: -290px;
 }
-
+#regionalDexList{
+    font-family: 'Press Start 2P', cursive;
+    color:green;
+    position: relative;
+    left: -650px;
+    visibility: hidden;
+}
+.region{
+    width: 275px;
+    padding: 5px;
+}
 .screenLights{
     display: flex;
     list-style-type: none;

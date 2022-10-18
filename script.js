@@ -20,6 +20,7 @@ let selector = document.querySelector(".selector");
 //Global Variables
 let counter=0;
 let nationalDex = false;
+let regionArr = ['Kanto 0 - 151','Johto 152 - 251','Hoenn 252 - 386','Sinnoh 387 - 493','Unova 494 - 649','Kalos 650 -  721','Alola 722 - 809','Galar 810 - 905']
 //arrow selector variables
 let position = [0,1,2];
 let currentPosition = position[0];
@@ -29,16 +30,27 @@ let currentPosition = position[0];
 //http://pokeapi.co/api/v2/pokemon/?limit=811
 
 // const url =``
-function addItem(element){
+function addItem(element, choice){
     let nationalDexList = document.querySelector(".nationalDexList");
     let li = document.createElement("li");
     li.setAttribute('id',element.name);
-    li.setAttribute('role', "option");
-    li.appendChild(document.createTextNode(`#${counter}:${element.name}`));
-    nationalDexList.appendChild(li);
+    if (choice === 0){
+        nationalDexList.appendChild(li);
+        li.appendChild(document.createTextNode(`#${counter}:${element.name}`));
+    }
+    else if (choice === 1)
+    {
+        
+    }
     counter++;
 }
-
+const hideNavBar = () => {
+    document.querySelector(".searchButton").style.visibility = "hidden";
+    document.querySelector(".nationalDex").style.visibility = "hidden";
+    document.querySelector("#inputBar").style.visibility = "hidden";
+    document.querySelector(".regionalDex").style.visibility = "hidden";
+    document.querySelector(".selector").style.visibility = "hidden";
+}
 async function getData(event) {
     
     let textInput = document.querySelector("#inputBar").value.toLowerCase();
@@ -67,13 +79,19 @@ async function showNationalDex(event) {
     .then(response => {
         let nationalDexArr = response.results;
         for (let i=0; i<nationalDexArr.length; i++){
-            addItem(nationalDexArr[i]);
+            addItem(nationalDexArr[i], 0);
         }
     })
     .catch(error => {
         console.log("failure", error);
     })
 }
+const showRegionlDexList = () =>
+{
+    document.querySelector("#regionalDexList").style.visibility = "visible";
+    document.querySelector("#rightViewScreen").style.overflowY = "scroll";
+}
+
 
 rightArrow.addEventListener("click", () => {
     if (currentPosition === position[0]){
@@ -109,13 +127,8 @@ leftArrow.addEventListener("click", () => {
 enterButton.addEventListener("click", getData); 
 selectButton.addEventListener("click",() => {
     if (currentPosition === 1){
-        document.querySelector(".searchButton").style.visibility = "hidden";
-        document.querySelector(".nationalDex").style.visibility = "hidden";
-        document.querySelector("#inputBar").style.visibility = "hidden";
-        document.querySelector(".regionalDex").style.visibility = "hidden";
-        document.querySelector(".selector").style.visibility = "hidden";
+        hideNavBar();
         document.querySelector("#rightViewScreen").style.overflowY = "scroll";
-        selector.style.transform = "translateX(0px)";
         currentPosition = position[0];
         if (nationalDex === false){
         showNationalDex();
@@ -123,18 +136,24 @@ selectButton.addEventListener("click",() => {
         }
         else if (nationalDex === true)
         {
-        document.querySelector(".nationalDexList").style.visibility = "visible"; 
-        }
+        document.querySelector(".nationalDexList").style.visibility = "visible";
+        } 
         
+    }
+    else if (currentPosition === 2)
+    {
+        hideNavBar();
+        showRegionlDexList();
     }
 });
 returnButton.addEventListener("click",() => {
     document.querySelector("#rightViewScreen").style.overflowY = "hidden";
+    document.querySelector(".nationalDexList").style.visibility = "hidden";
+    document.querySelector("#regionalDexList").style.visibility = "hidden";
     document.querySelector(".searchButton").style.visibility = "visible";
     document.querySelector(".nationalDex").style.visibility = "visible";
     document.querySelector("#inputBar").style.visibility = "visible";
     document.querySelector(".regionalDex").style.visibility = "visible";
-    document.querySelector(".nationalDexList").style.visibility = "hidden";
     document.querySelector(".selector").style.visibility = "visible";
     
 });
