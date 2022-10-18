@@ -12,7 +12,8 @@ let leftArrow = document.querySelector("#blackRectangle1");
 let rightArrow = document.querySelector("#blackRectangle2");
 
 let enterButton = document.querySelector("#enterButton");
-let grid1 = document.querySelector("#grid1");
+let upArrow = document.querySelector("#grid1");
+let downArrow = document.querySelector("#grid6");
 
 //Right Screen Variables
 let selector = document.querySelector(".selector");
@@ -22,9 +23,12 @@ let counter=0;
 let nationalDex = false;
 let regionArr = ['Kanto 0 - 151','Johto 152 - 251','Hoenn 252 - 386','Sinnoh 387 - 493','Unova 494 - 649','Kalos 650 -  721','Alola 722 - 809','Galar 810 - 905']
 //arrow selector variables
-let position = [0,1,2];
+let position = [0,1,2, 3];
 let currentPosition = position[0];
-//move arrow right  and left
+let verticalPosition = [0,1,2,3,4,5,6,7];
+let currentVertical = position[0];
+let verticalHeight = 20;
+
 
 
 //http://pokeapi.co/api/v2/pokemon/?limit=811
@@ -90,20 +94,31 @@ const showRegionlDexList = () =>
 {
     document.querySelector("#regionalDexList").style.visibility = "visible";
     document.querySelector("#rightViewScreen").style.overflowY = "scroll";
+    document.querySelector(".selector").style.visibility = "visible";
+    selector.style.transform = "translate(0px,20px)";
 }
-
+const showHomeScreen =() =>{
+    document.querySelector("#rightViewScreen").style.overflowY = "hidden";
+    document.querySelector(".nationalDexList").style.visibility = "hidden";
+    document.querySelector("#regionalDexList").style.visibility = "hidden";
+    document.querySelector(".searchButton").style.visibility = "visible";
+    document.querySelector(".nationalDex").style.visibility = "visible";
+    document.querySelector("#inputBar").style.visibility = "visible";
+    document.querySelector(".regionalDex").style.visibility = "visible";
+    document.querySelector(".selector").style.visibility = "visible";
+}
 
 rightArrow.addEventListener("click", () => {
     if (currentPosition === position[0]){
-        selector.style.transform = "translateX(95px)";
+        selector.style.transform = "translateX(78px)";
         currentPosition = position[1];
     }
     else if (currentPosition === position[1]){
-        selector.style.transform = "translateX(210px)";
+        selector.style.transform = "translateX(225px)";
         currentPosition = position[2];
     }
     if (currentPosition === position[2]){
-        selector.style.transform = "translateX(210px)";
+        selector.style.transform = "translateX(225px)";
         currentPosition = position[2];
     }
     return currentPosition;
@@ -119,17 +134,41 @@ leftArrow.addEventListener("click", () => {
         currentPosition = position[0];
     }
     if (currentPosition === position[2]){
-        selector.style.transform = "translateX(95px)";
+        selector.style.transform = "translateX(78px)";
         currentPosition = position[1];
     }
     return currentPosition;
 });
+downArrow.addEventListener("click", () => {
+    if (currentPosition === 0 ||currentPosition === 1 ||currentPosition === 2 )
+    {
+        return;
+    }
+    else if (currentVertical < verticalPosition[7])
+    {
+    document.querySelector(".selector").style.transform = `translate(0px, ${verticalHeight+25}px)`
+    currentVertical = verticalPosition[currentVertical+1];
+    return verticalHeight = verticalHeight+25;
+}
+})
+upArrow.addEventListener("click", () => {
+    if (currentPosition === 0 ||currentPosition === 1 ||currentPosition === 2 )
+    {
+        return;
+    }
+    if (currentVertical > verticalPosition[0])
+    {
+    document.querySelector(".selector").style.transform = `translate(0px, ${verticalHeight-25}px)`
+    currentVertical = verticalPosition[currentVertical-1];
+    return verticalHeight = verticalHeight-25;
+}
+})
+
 enterButton.addEventListener("click", getData); 
 selectButton.addEventListener("click",() => {
     if (currentPosition === 1){
         hideNavBar();
         document.querySelector("#rightViewScreen").style.overflowY = "scroll";
-        currentPosition = position[0];
         if (nationalDex === false){
         showNationalDex();
         nationalDex=true;
@@ -142,20 +181,18 @@ selectButton.addEventListener("click",() => {
     }
     else if (currentPosition === 2)
     {
+        currentPosition = position[3];
         hideNavBar();
         showRegionlDexList();
     }
 });
 returnButton.addEventListener("click",() => {
-    document.querySelector("#rightViewScreen").style.overflowY = "hidden";
-    document.querySelector(".nationalDexList").style.visibility = "hidden";
-    document.querySelector("#regionalDexList").style.visibility = "hidden";
-    document.querySelector(".searchButton").style.visibility = "visible";
-    document.querySelector(".nationalDex").style.visibility = "visible";
-    document.querySelector("#inputBar").style.visibility = "visible";
-    document.querySelector(".regionalDex").style.visibility = "visible";
-    document.querySelector(".selector").style.visibility = "visible";
-    
+    showHomeScreen();
+    if( currentPosition === 3){
+    selector.style.transform = "translateX(225px)";
+    currentPosition = position[2];
+    }
+    return currentPosition;
 });
 
 

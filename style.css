@@ -176,20 +176,23 @@ ul {
     overflow-Y:hidden;
     overflow-X: hidden;
 }
-#rightViewScreen::-webkit-scrollbar-thumb  {
-    color:green;
-}
 .searchButton, .nationalDex, .regionalDex{
     background-color: inherit;
-    position:relative;
+    position:absolute;
     left: 22px;
     color: green;
     border:none;    
     font-family: 'Press Start 2P', cursive;
     font-size: 10px;
     padding: 0;
-    margin: 5px 15px 0px 15px;
+    margin: 5px 40px 40px 15px;
     visibility: inherit;
+}
+.nationalDex{
+left: 100px;
+}
+.regionalDex{
+left: 250px;
 }
 .selector{
     color: green;
@@ -222,13 +225,13 @@ ul {
     font-family: 'Press Start 2P', cursive;
     color:green;
     position: relative;
-    left: -290px;
+    left: 0px;
 }
 #regionalDexList{
     font-family: 'Press Start 2P', cursive;
     color:green;
-    position: relative;
-    left: -650px;
+    position: absolute;
+    left: -5px;
     visibility: hidden;
 }
 .region{
@@ -568,12 +571,14 @@ left: 10px;
 }
 #grid1{
     border-radius: 4px 0 0 0;
+    font-size: 30px;
 }
 #grid5{
     border-radius:0 4px 0 0;
 }
 #grid6{
     border-radius:0 0 0 4px;
+    font-size: 30px;
 }
 #grid10{
     border-radius:0 0 4px 0px;
