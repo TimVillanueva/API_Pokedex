@@ -185,9 +185,30 @@ ul {
     color: green;
     visibility: hidden;
 }
+#leftScreenSelector{
+    visibility: hidden;
+    position: relative;
+    left: 10px;
+    top: 17px;
 
-
-
+    
+}
+.stats, .examine{
+    color: green;
+    position: relative;
+    left: 35px;
+    visibility: hidden;
+}
+.statsDisplay {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: -320px;
+    left: 180px;
+    visibility:hidden;
+    color: green;
+    font-size: 14px
+}
 
 
 
