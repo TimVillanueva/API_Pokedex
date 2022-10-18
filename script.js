@@ -22,14 +22,12 @@ let selector = document.querySelector(".selector");
 let counter=1;
 let nationalDex = false;
 let regionArr = ['Kanto','Johto','Hoenn','Sinnoh','Unova','Kalos','Alola','Galar'];
-//arrow selector variables
+//positional variables
 let position = [0,1,2, 3];
 let currentPosition = position[0];
 let verticalPosition = [0,1,2,3,4,5,6,7];
 let currentVertical = verticalPosition[0];
 let verticalHeight = 20;
-
-
 
 //http://pokeapi.co/api/v2/pokemon/?limit=811
 
@@ -71,10 +69,32 @@ async function getData(event) {
         let bottomScreen = document.querySelector(".bottomScreen");
         bottomScreen.innerText = `\n ${response.name} \n id: ${response.id}`;
         document.querySelector("#inputBar").value = "";
+        console.log(response);
+        displayInfo(response);
     })
     .catch(error => {
         console.log("failure", error);
     })
+    
+}
+const displayInfo = (masterData) => {
+    let normalSprite = masterData.sprites.front_default;
+    console.log(normalSprite);
+    document.querySelector(".sprite").src = normalSprite;
+    document.querySelector(".sprite").style.visibility = "visible";
+
+    document.querySelector(".displayType").style.visibility = "visible";
+    if (masterData.types.length === 1)
+    {
+        
+        let type = masterData.types[0].type.name
+        document.querySelector(".displayType").innerText = `Type: ${type}`
+    }
+    else {
+        let type1 = masterData.types[0].type.name
+        let type2 = masterData.types[1].type.name
+        document.querySelector(".displayType").innerText = `Type: \n ${type1} / ${type2}`
+    }
     
 }
 async function showNationalDex(event) {
@@ -93,7 +113,6 @@ async function showNationalDex(event) {
     })
 }
 async function createRegionalDex (event) {
-    console.log(event)
     fetch(`http://pokeapi.co/api/v2/pokemon/?limit=${(event[1]-event[0])}&offset=${event[0]}`)
     .then( response => {
         return response.json();
@@ -153,7 +172,6 @@ rightArrow.addEventListener("click", () => {
     return currentPosition;
 });
 leftArrow.addEventListener("click", () => {
-    console.log(currentPosition);
     if (currentPosition === position[0]){
         selector.style.transform = "translateX(0px)";
         currentPosition = position[0];
@@ -192,7 +210,6 @@ upArrow.addEventListener("click", () => {
     return verticalHeight = verticalHeight-25;
 }
 })
-
 enterButton.addEventListener("click", getData); 
 selectButton.addEventListener("click",() => {
     
@@ -223,15 +240,18 @@ selectButton.addEventListener("click",() => {
     }
 });
 returnButton.addEventListener("click",() => {
-    console.log(currentPosition);
     if(currentPosition === 3){
     selector.style.transform = "translateX(225px)";
     currentPosition = position[2];
     currentVertical = verticalPosition[0];
     verticalHeight = 20;
     document.querySelector(".regionList").innerText ="";
-    counter =1;
+
     }
+    if (currentPosition === 1){
+
+    }
+    counter=1;
     showHomeScreen();
     return currentPosition, counter;
 });

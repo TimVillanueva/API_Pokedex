@@ -166,6 +166,36 @@ ul {
     height:95%;
     width:96%;
 }
+#leftViewScreen{
+
+}
+.sprite{
+    position: relative;
+    top: 0px;
+    width: 150px;
+    height: 150px;
+    visibility:hidden;
+}
+.displayType{
+    height: 50px;
+    width: 200px;
+    position: absolute;
+    top: 70px;
+    right: 45px;
+    color: green;
+    visibility: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
 #rightViewScreen{
     position: relative;
     left: 3px;
