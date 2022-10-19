@@ -209,7 +209,21 @@ ul {
     color: green;
     font-size: 14px
 }
-
+.dPadInstructions{
+    visibility:hidden;
+    color:green;
+    position: absolute;
+    top: 278px;
+    width: 350px;
+}
+.returner{
+    color: green;
+    position: absolute;
+    top:70px;
+    right: 50px;
+    font-size: 10px;
+    visibility: hidden;
+}
 
 
 

@@ -17,7 +17,7 @@ let upArrow = document.querySelector("#grid1");
 let downArrow = document.querySelector("#grid6");
 
 //Right Screen Variables
-let selector = document.querySelector(".selector");
+let selector = document.querySelector("#rightSelector");
 
 //Global Variables
 let counter=1;
@@ -26,13 +26,13 @@ let nationalDex = false;
 let regionArr = ['Kanto','Johto','Hoenn','Sinnoh','Unova','Kalos','Alola','Galar'];
 //positional variables right screen
 let leftSelector = document.querySelector("#leftScreenSelector");
-let position = [0,1,2, 3];
+let position = [0,1,2,3];
 let currentPosition = position[0];
 let verticalPosition = [0,1,2,3,4,5,6,7];
 let currentVertical = verticalPosition[0];
 let verticalHeight = 20;
 //positional variables left screen
-let leftPosition = [0,1,2];
+let leftPosition = [0,1,2,3,4];
 let currentLeftPosition = leftPosition[0];
 
 
@@ -87,7 +87,6 @@ async function getData(event) {
 }
 const displayInfo = (masterData) => {
     let normalSprite = masterData.sprites.front_default;
-    console.log(normalSprite);
     document.querySelector(".sprite").src = normalSprite;
     document.querySelector(".sprite").style.visibility = "visible";
     document.querySelector("#leftScreenSelector").style.visibility = "visible"
@@ -193,6 +192,8 @@ const hideLeftScreen = () => {
     document.querySelector(".stats").style.visibility = "hidden";
     document.querySelector(".sprite").style.visibility = "hidden";
     document.querySelector(".statsDisplay").style.visibility = "hidden";
+    document.querySelector(".dPadInstructions").style.visibility = "hidden";
+    document.querySelector(".returner").style.visibility = "hidden";
 }
 const showRegionList = (position) => {
     
@@ -258,18 +259,30 @@ upArrow.addEventListener("click", () => {
 })
 enterButton.addEventListener("click", getData); 
 aButton.addEventListener("click", () => {
-    if (currentLeftPosition === 0)
+    if (currentLeftPosition === 0) //stats
     {
         let statValueArr = getStats(currentPokemon);
         displayStats(statValueArr);
     }
-    else if (currentLeftPosition === 2)
+    else if(currentLeftPosition === 1) { //examine
+        hideLeftScreen();
+        currentLeftPosition = leftPosition[2]
+        document.querySelector(".sprite").style.visibility = "visible";
+        document.querySelector(".sprite").style.height = "220px";
+        document.querySelector(".sprite").style.width = "220px";
+        document.querySelector(".sprite").style.transform = "translateX(60px)";
+        document.querySelector(".sprite").style.transform = "translateY(-10px)";
+        document.querySelector(".dPadInstructions").style.visibility = "visible";
+        document.querySelector(".returner").style.visibility = "visible";
+    }
+    else if (currentLeftPosition === 2) //return from stats and examine
     {
         hideLeftScreen();
         document.querySelector(".sprite").style.height = "150px";
         document.querySelector(".sprite").style.width = "150px";
         document.querySelector(".sprite").style.transform = "translateX(0px)";
         displayInfo(currentPokemon);
+        leftSelector.style.transform = "translateY(0px)";
         currentLeftPosition = leftPosition[0];
     }
 })
