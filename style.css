@@ -655,6 +655,13 @@ left: 10px;
 #grid10{
     border-radius:0 0 4px 0px;
 }
+#unown{
+    position: relative;
+    left: 0px;
+    bottom: 10px;
+    width:65px;
+    height:65px;
+}
 .rightBottomContainer{
     display:flex;
     position: relative;

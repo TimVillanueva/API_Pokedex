@@ -35,7 +35,7 @@ let verticalHeight = 20;
 let leftPosition = [0,1,2,3,4];
 let currentLeftPosition = leftPosition[0];
 
-
+let spritePosition = 0;
 //http://pokeapi.co/api/v2/pokemon/?limit=811
 
 //functions
@@ -81,6 +81,8 @@ async function getData(event) {
         return currentPokemon;
     })
     .catch(error => {
+        let bottomScreen = document.querySelector(".bottomScreen");
+        bottomScreen.innerText = `Not Found`;
         console.log("failure", error);
     })
     
@@ -202,6 +204,8 @@ const showRegionList = (position) => {
     console.log(position)
     createRegionalDex(position);
 }
+
+
 //event Listeners
 rightArrow.addEventListener("click", () => {
     if (currentPosition === position[0]){
@@ -332,6 +336,35 @@ padUp.addEventListener("click", () => {
         currentLeftPosition = leftPosition[0];
     }
 })
+padRight.addEventListener("click", () => {
+    let spriteArr = [currentPokemon.sprites.front_default,currentPokemon.sprites.back_default,currentPokemon.sprites.front_shiny,currentPokemon.sprites.back_shiny ]
+    if (spritePosition === 3)
+    {
+        document.querySelector(".sprite").src = spriteArr[0]
+        return spritePosition = 0;
+    }
+    else if (currentLeftPosition === 2){
+        spritePosition++;
+        document.querySelector(".sprite").src = spriteArr[spritePosition];
+        console.log(spritePosition)
+        return spritePosition;
+    }
+});
+padLeft.addEventListener("click", () => {
+
+    let spriteArr = [currentPokemon.sprites.front_default,currentPokemon.sprites.back_default,currentPokemon.sprites.front_shiny,currentPokemon.sprites.back_shiny ]
+    if (spritePosition === 0)
+    {
+        document.querySelector(".sprite").src = spriteArr[3]
+        return spritePosition = 3;
+    }
+    if (currentLeftPosition === 2){
+        spritePosition--;
+        document.querySelector(".sprite").src = spriteArr[spritePosition];
+        console.log(spritePosition)
+        return spritePosition;
+    }
+});
 returnButton.addEventListener("click",() => {
     if(currentPosition === 3){
     selector.style.transform = "translateX(225px)";
