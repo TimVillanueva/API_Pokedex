@@ -16,7 +16,12 @@ let enterButton = document.querySelector("#enterButton");
 let upArrow = document.querySelector("#grid1");
 let downArrow = document.querySelector("#grid6");
 
-//Right Screen Variables
+//Left Side Elements
+let sprite = document.querySelector(".sprite");
+
+
+
+//Right Screen Elements
 let selector = document.querySelector("#rightSelector");
 
 //Global Variables
@@ -26,21 +31,19 @@ let nationalDex = false;
 let regionArr = ['Kanto','Johto','Hoenn','Sinnoh','Unova','Kalos','Alola','Galar'];
 //positional variables right screen
 let leftSelector = document.querySelector("#leftScreenSelector");
-let position = [0,1,2,3];
+let position = [0,1,2,3]; //scene manager
 let currentPosition = position[0];
 let verticalPosition = [0,1,2,3,4,5,6,7];
 let currentVertical = verticalPosition[0];
 let verticalHeight = 20;
 //positional variables left screen
-let leftPosition = [0,1,2,3,4];
+let leftPosition = [0,1,2]; //scene manager
 let currentLeftPosition = leftPosition[0];
-
 let spritePosition = 0;
-//http://pokeapi.co/api/v2/pokemon/?limit=811
+
 
 //functions
-
-function addItem(element, choice){
+const addItem = (element, choice)=>{
     let nationalDexList = document.querySelector(".nationalDexList");
     let regionList = document.querySelector(".regionList");
     let li = document.createElement("li");
@@ -61,41 +64,21 @@ const hideNavBar = () => {
     document.querySelector(".nationalDex").style.visibility = "hidden";
     document.querySelector("#inputBar").style.visibility = "hidden";
     document.querySelector(".regionalDex").style.visibility = "hidden";
-    document.querySelector(".selector").style.visibility = "hidden";
-}
-async function getData(event) {
-    
-    let textInput = document.querySelector("#inputBar").value.toLowerCase();
-    
-    event.preventDefault();
-
-    fetch(`https://pokeapi.co/api/v2/pokemon/${textInput}`)
-    .then( response => {
-        return response.json();
-    })
-    .then(response => {
-        let bottomScreen = document.querySelector(".bottomScreen");
-        bottomScreen.innerText = `\n ${response.name} \n id: ${response.id}`;
-        document.querySelector("#inputBar").value = "";
-        currentPokemon = displayInfo(response);
-        return currentPokemon;
-    })
-    .catch(error => {
-        let bottomScreen = document.querySelector(".bottomScreen");
-        bottomScreen.innerText = `Not Found`;
-        console.log("failure", error);
-    })
-    
+    selector.style.visibility = "hidden";
 }
 const displayInfo = (masterData) => {
     let normalSprite = masterData.sprites.front_default;
-    document.querySelector(".sprite").src = normalSprite;
-    document.querySelector(".sprite").style.visibility = "visible";
+    sprite.src = normalSprite;
+    sprite.style.visibility = "visible";
     document.querySelector("#leftScreenSelector").style.visibility = "visible"
     document.querySelector(".stats").style.visibility = "visible"
     document.querySelector(".examine").style.visibility = "visible"
-
     document.querySelector(".displayType").style.visibility = "visible";
+    if ( currentLeftPosition === 2){
+        hideLeftScreen();
+        resetLeftscreen();
+        displayInfo(masterData);
+    }
     if (masterData.types.length === 1)
     {
         
@@ -120,9 +103,9 @@ const getStats = (thisPokemon) => {
 const displayStats = (statArr) => {
     hideLeftScreen();
     document.querySelector(".sprite").style.visibility = "visible";
-    document.querySelector(".sprite").style.height = "250px";
-    document.querySelector(".sprite").style.width = "250px";
-    document.querySelector(".sprite").style.transform = "translateX(-45px)";
+    document.querySelector(".sprite").style.height = "200px";
+    document.querySelector(".sprite").style.width = "200px";
+    document.querySelector(".sprite").style.transform = "translateX(0px)";
     document.querySelector(".statsDisplay").style.visibility = "visible";
     document.querySelector(".statsDisplay").innerText =
     `HP: ${statArr[0]}\n 
@@ -137,21 +120,61 @@ const displayStats = (statArr) => {
 
     return currentLeftPosition;
 }
-async function showNationalDex(event) {
-    fetch(`http://pokeapi.co/api/v2/pokemon/?limit=905`)
-    .then( response => {
-        return response.json();
-    })
-    .then(response => {
-        let nationalDexArr = response.results;
-        for (let i=0; i<nationalDexArr.length; i++){
-            addItem(nationalDexArr[i], 0);
-        }
-    })
-    .catch(error => {
-        console.log("failure", error);
-    })
+const displayExamine = () => {
+    currentLeftPosition = leftPosition[2]
+    sprite.style.visibility = "visible";
+    sprite.style.height = "220px";
+    sprite.style.width = "220px";
+    sprite.style.transform = "translateX(60px)";
+    sprite.style.transform = "translateY(-10px)";
+    document.querySelector(".dPadInstructions").style.visibility = "visible";
+    document.querySelector(".returner").style.visibility = "visible";
 }
+const showRegionlDexList = () =>
+{
+    document.querySelector("#regionalDexList").style.visibility = "visible";
+    document.querySelector("#rightViewScreen").style.overflowY = "scroll";
+    selector.style.visibility = "visible";
+    selector.style.transform = "translate(0px,20px)";
+}
+const showHomeScreen =() =>{
+    document.querySelector(".regionList").style.visibility="hidden";
+    document.querySelector("#rightViewScreen").style.overflowY = "hidden";
+    document.querySelector(".nationalDexList").style.visibility = "hidden";
+    document.querySelector("#regionalDexList").style.visibility = "hidden";
+    document.querySelector(".searchButton").style.visibility = "visible";
+    document.querySelector(".nationalDex").style.visibility = "visible";
+    document.querySelector("#inputBar").style.visibility = "visible";
+    document.querySelector(".regionalDex").style.visibility = "visible";
+    selector.style.visibility = "visible";
+    
+}
+const hideLeftScreen = () => {
+    document.querySelector(".examine").style.visibility = "hidden";
+    document.querySelector(".displayType").style.visibility = "hidden";
+    document.querySelector("#leftScreenSelector").style.visibility = "hidden";
+    document.querySelector(".stats").style.visibility = "hidden";
+    sprite.style.visibility = "hidden";
+    document.querySelector(".statsDisplay").style.visibility = "hidden";
+    document.querySelector(".dPadInstructions").style.visibility = "hidden";
+    document.querySelector(".returner").style.visibility = "hidden";
+}
+const showRegionList = (position) => {
+    
+    document.querySelector("#regionalDexList").style.visibility = "hidden";
+    document.querySelector("#rightSelector").style.visibility = "hidden";
+    createRegionalDex(position);
+}
+const resetLeftscreen = () => {
+    document.querySelector(".sprite").style.height = "150px";
+    document.querySelector(".sprite").style.width = "150px";
+    document.querySelector(".sprite").style.transform = "translateX(0px)";
+    leftSelector.style.transform = "translateY(0px)";
+    currentLeftPosition = leftPosition[0];
+}
+
+
+//API call functions
 async function createRegionalDex (event) {
     fetch(`http://pokeapi.co/api/v2/pokemon/?limit=${(event[1]-event[0])}&offset=${event[0]}`)
     .then( response => {
@@ -168,41 +191,44 @@ async function createRegionalDex (event) {
         console.log("failure", error);
     })
 }
-const showRegionlDexList = () =>
-{
-    document.querySelector("#regionalDexList").style.visibility = "visible";
-    document.querySelector("#rightViewScreen").style.overflowY = "scroll";
-    document.querySelector(".selector").style.visibility = "visible";
-    selector.style.transform = "translate(0px,20px)";
+async function showNationalDex(event) {
+    fetch(`http://pokeapi.co/api/v2/pokemon/?limit=905`)
+    .then( response => {
+        return response.json();
+    })
+    .then(response => {
+        let nationalDexArr = response.results;
+        for (let i=0; i<nationalDexArr.length; i++){
+            addItem(nationalDexArr[i], 0);
+        }
+    })
+    .catch(error => {
+        console.log("failure", error);
+    })
 }
-const showHomeScreen =() =>{
-    document.querySelector(".regionList").style.visibility="hidden";
-    document.querySelector("#rightViewScreen").style.overflowY = "hidden";
-    document.querySelector(".nationalDexList").style.visibility = "hidden";
-    document.querySelector("#regionalDexList").style.visibility = "hidden";
-    document.querySelector(".searchButton").style.visibility = "visible";
-    document.querySelector(".nationalDex").style.visibility = "visible";
-    document.querySelector("#inputBar").style.visibility = "visible";
-    document.querySelector(".regionalDex").style.visibility = "visible";
-    document.querySelector(".selector").style.visibility = "visible";
+async function getData(event) {
     
-}
-const hideLeftScreen = () => {
-    document.querySelector(".examine").style.visibility = "hidden";
-    document.querySelector(".displayType").style.visibility = "hidden";
-    document.querySelector("#leftScreenSelector").style.visibility = "hidden";
-    document.querySelector(".stats").style.visibility = "hidden";
-    document.querySelector(".sprite").style.visibility = "hidden";
-    document.querySelector(".statsDisplay").style.visibility = "hidden";
-    document.querySelector(".dPadInstructions").style.visibility = "hidden";
-    document.querySelector(".returner").style.visibility = "hidden";
-}
-const showRegionList = (position) => {
+    let textInput = document.querySelector("#inputBar").value.toLowerCase();
     
-    document.querySelector("#regionalDexList").style.visibility = "hidden";
-    document.querySelector(".selector").style.visibility = "hidden";
-    console.log(position)
-    createRegionalDex(position);
+    event.preventDefault();
+
+    fetch(`https://pokeapi.co/api/v2/pokemon/${textInput}`)
+    .then( response => {
+        return response.json();
+    })
+    .then(response => {
+        let bottomScreen = document.querySelector(".bottomScreen");
+        bottomScreen.innerText = `\n ${response.name} \n id: ${response.id}`;
+        document.querySelector("#inputBar").value = "";
+        currentPokemon = displayInfo(response);
+        return currentPokemon;
+    })
+    .catch(error => {
+        let bottomScreen = document.querySelector(".bottomScreen");
+        bottomScreen.innerText = `Not Found`;
+        console.log("failure", error);
+    })
+    
 }
 
 
@@ -238,13 +264,14 @@ leftArrow.addEventListener("click", () => {
     return currentPosition;
 });
 downArrow.addEventListener("click", () => {
+    console.log(currentPosition);
     if (currentPosition === 0 ||currentPosition === 1 ||currentPosition === 2 )
     {
         return;
     }
     else if (currentVertical < verticalPosition[7])
     {
-    document.querySelector(".selector").style.transform = `translate(0px, ${verticalHeight+25}px)`
+    selector.style.transform = `translate(0px, ${verticalHeight+25}px)`
     currentVertical = verticalPosition[currentVertical+1];
     return verticalHeight = verticalHeight+25;
 }
@@ -256,12 +283,13 @@ upArrow.addEventListener("click", () => {
     }
     if (currentVertical > verticalPosition[0])
     {
-    document.querySelector(".selector").style.transform = `translate(0px, ${verticalHeight-25}px)`
+    selector.style.transform = `translate(0px, ${verticalHeight-25}px)`
     currentVertical = verticalPosition[currentVertical-1];
     return verticalHeight = verticalHeight-25;
 }
 })
 enterButton.addEventListener("click", getData); 
+
 aButton.addEventListener("click", () => {
     if (currentLeftPosition === 0) //stats
     {
@@ -270,24 +298,13 @@ aButton.addEventListener("click", () => {
     }
     else if(currentLeftPosition === 1) { //examine
         hideLeftScreen();
-        currentLeftPosition = leftPosition[2]
-        document.querySelector(".sprite").style.visibility = "visible";
-        document.querySelector(".sprite").style.height = "220px";
-        document.querySelector(".sprite").style.width = "220px";
-        document.querySelector(".sprite").style.transform = "translateX(60px)";
-        document.querySelector(".sprite").style.transform = "translateY(-10px)";
-        document.querySelector(".dPadInstructions").style.visibility = "visible";
-        document.querySelector(".returner").style.visibility = "visible";
+        displayExamine();
     }
     else if (currentLeftPosition === 2) //return from stats and examine
     {
         hideLeftScreen();
-        document.querySelector(".sprite").style.height = "150px";
-        document.querySelector(".sprite").style.width = "150px";
-        document.querySelector(".sprite").style.transform = "translateX(0px)";
+        resetLeftscreen();
         displayInfo(currentPokemon);
-        leftSelector.style.transform = "translateY(0px)";
-        currentLeftPosition = leftPosition[0];
     }
 })
 selectButton.addEventListener("click",() => {
@@ -337,33 +354,32 @@ padUp.addEventListener("click", () => {
     }
 })
 padRight.addEventListener("click", () => {
+    if (currentLeftPosition === 2){
     let spriteArr = [currentPokemon.sprites.front_default,currentPokemon.sprites.back_default,currentPokemon.sprites.front_shiny,currentPokemon.sprites.back_shiny ]
     if (spritePosition === 3)
     {
         document.querySelector(".sprite").src = spriteArr[0]
         return spritePosition = 0;
     }
-    else if (currentLeftPosition === 2){
         spritePosition++;
         document.querySelector(".sprite").src = spriteArr[spritePosition];
-        console.log(spritePosition)
         return spritePosition;
-    }
+
+}
 });
 padLeft.addEventListener("click", () => {
-
+    if (currentLeftPosition === 2){
     let spriteArr = [currentPokemon.sprites.front_default,currentPokemon.sprites.back_default,currentPokemon.sprites.front_shiny,currentPokemon.sprites.back_shiny ]
+    
     if (spritePosition === 0)
     {
         document.querySelector(".sprite").src = spriteArr[3]
         return spritePosition = 3;
     }
-    if (currentLeftPosition === 2){
         spritePosition--;
         document.querySelector(".sprite").src = spriteArr[spritePosition];
-        console.log(spritePosition)
         return spritePosition;
-    }
+}
 });
 returnButton.addEventListener("click",() => {
     if(currentPosition === 3){
@@ -372,9 +388,6 @@ returnButton.addEventListener("click",() => {
     currentVertical = verticalPosition[0];
     verticalHeight = 20;
     document.querySelector(".regionList").innerText ="";
-
-    }
-    if (currentPosition === 1){
 
     }
     counter=1;
