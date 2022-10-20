@@ -176,7 +176,7 @@ const resetLeftscreen = () => {
 
 //API call functions
 async function createRegionalDex (event) {
-    fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${(event[1]-event[0])}&offset=${event[0]}`)
+    fetch(`HTTPS://pokeapi.co/api/v2/pokemon/?limit=${(event[1]-event[0])}&offset=${event[0]}`)
     .then( response => {
         return response.json();
     })
@@ -192,7 +192,7 @@ async function createRegionalDex (event) {
     })
 }
 async function showNationalDex(event) {
-    fetch(`https://pokeapi.co/api/v2/pokemon/?limit=905`)
+    fetch(`HTTPS://pokeapi.co/api/v2/pokemon/?limit=905`)
     .then( response => {
         return response.json();
     })
