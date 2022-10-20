@@ -8,7 +8,8 @@ The goal of this project is to make a fully functional pokedex using the pokeAPI
 
 ![pokedex](https://static.wikia.nocookie.net/pokemon/images/5/5c/Gen_I_Pokedex.png/revision/latest?cb=20100717083120)
 
-##Functionality
+## Functionality
+
 - On right of Pokedex
   - use left and right buttons to scroll between options
   - Using the select button, one can select the national dex to show all 905 pokemon or choose a specific region to display with the regional dex selection
