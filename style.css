@@ -160,7 +160,6 @@ ul {
 }
 .viewScreen{
     margin: 5px;
-    /* border: 2px solid white; */
     height:95%;
     width:96%;
 }
@@ -241,12 +240,13 @@ ul {
     position:absolute;
     left: 22px;
     color: green;
+    top: 0px;
     border:none;    
     font-family: 'Press Start 2P', cursive;
     font-size: 10px;
     padding: 0;
     margin: 5px 40px 40px 15px;
-    visibility: inherit;
+    visibility: visible;
 }
 .nationalDex{
 left: 100px;
@@ -284,7 +284,7 @@ left: 250px;
 .nationalDexList {
     font-family: 'Press Start 2P', cursive;
     color:green;
-    position: relative;
+    position: absolute;
     left: 0px;
 }
 #regionalDexList{

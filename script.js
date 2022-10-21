@@ -66,6 +66,13 @@ const hideNavBar = () => {
     document.querySelector(".regionalDex").style.visibility = "hidden";
     selector.style.visibility = "hidden";
 }
+const showNavBar = () =>{
+    document.querySelector(".searchButton").style.visibility = "visible";
+    document.querySelector(".nationalDex").style.visibility = "visible";
+    document.querySelector("#inputBar").style.visibility = "visible";
+    document.querySelector(".regionalDex").style.visibility = "visible";
+    selector.style.visibility = "visible";
+}
 const displayInfo = (masterData) => {
     let normalSprite = masterData.sprites.front_default;
     sprite.src = normalSprite;
@@ -96,7 +103,6 @@ const getStats = (thisPokemon) => {
     let statValues = []; 
     for (let i=0; i<6;i++){
         statValues.push(thisPokemon.stats[i].base_stat)
-
     }
     return statValues;
 }
@@ -141,14 +147,11 @@ const showHomeScreen =() =>{
     document.querySelector(".regionList").style.visibility="hidden";
     document.querySelector("#rightViewScreen").style.overflowY = "hidden";
     document.querySelector(".nationalDexList").style.visibility = "hidden";
+    document.querySelector(".nationalDexList").innerText = " ";
     document.querySelector("#regionalDexList").style.visibility = "hidden";
-    document.querySelector(".searchButton").style.visibility = "visible";
-    document.querySelector(".nationalDex").style.visibility = "visible";
-    document.querySelector("#inputBar").style.visibility = "visible";
-    document.querySelector(".regionalDex").style.visibility = "visible";
-    selector.style.visibility = "visible";
-    
+    showNavBar()
 }
+
 const hideLeftScreen = () => {
     document.querySelector(".examine").style.visibility = "hidden";
     document.querySelector(".displayType").style.visibility = "hidden";
@@ -311,16 +314,10 @@ selectButton.addEventListener("click",() => {
     
     if (currentPosition === 1){
         hideNavBar();
-        document.querySelector("#rightViewScreen").style.overflowY = "scroll";
-        if (nationalDex === false){
+        document.querySelector("#rightViewScreen").style.overflowY = "auto";
         showNationalDex();
-        nationalDex=true;
-        }
-        else if (nationalDex === true)
-        {
+
         document.querySelector(".nationalDexList").style.visibility = "visible";
-        } 
-        
     }
     else if (currentPosition === 2)
     {
@@ -391,6 +388,7 @@ returnButton.addEventListener("click",() => {
 
     }
     counter=1;
+    document.querySelector("#rightViewScreen").scrollTop = 0;
     showHomeScreen();
     return currentPosition, counter;
 });
